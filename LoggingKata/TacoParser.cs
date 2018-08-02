@@ -19,15 +19,36 @@ namespace LoggingKata
                 // Take your line and use line.Split(',') to split it up into an array of strings, separated by the char ','
                 string [] cells = line.Split(',');
 
-                // If your array.Length is less than 3, something went wrong
-                if (cells.Length < 3)
+            // If your array.Length is less than 3, something went wrong
+            if (cells.Length < 3)
+            {
+                logger.LogWarning("Not enough values");
+                return null;
+                // Log that and return null
+            }
+
+            for (int i = 0; i < cells.Length; i++)
+            {
+
+                if (String.IsNullOrWhiteSpace(cells[i]))
                 {
-                    // Log that and return null
+                    if (cells[i].Length > 0)
+                    {
+                        logger.LogInfo("Incomplete Data");
+                        return null;
+                    }
+                    else
+                    {
+                        logger.LogFatal(null);
+                        return null;
+                    }
                 }
 
-            // grab the latitude from your array at index 0
+            }
 
-            string lat = cells[0];
+                    // grab the latitude from your array at index 0
+
+                    string lat = cells[0];
             // grab the longitude from your array at index 1
 
             string longt = cells[1];
@@ -53,9 +74,9 @@ namespace LoggingKata
             point1.Longitude = lonD;
 
 
-            TacoBell tacobell1 = new TacoBell();
-            tacobell1.Name = name ;
-            tacobell1.Location = point1;
+            TacoBell tacobell = new TacoBell();
+            tacobell.Name = name ;
+            tacobell.Location = point1;
 
 
 
@@ -64,7 +85,7 @@ namespace LoggingKata
             // Then, return the instance of your TacoBell class
             // Since it conforms to ITrackable
 
-            return tacobell1; 
+            return tacobell; 
 
 
             //_______________________________________________________________
