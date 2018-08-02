@@ -53,16 +53,18 @@ namespace LoggingKata
             point1.Longitude = lonD;
 
 
-            TacoBell tacobell = new TacoBell();
-            tacobell.Name = name ;
-            tacobell.Location = point1;
+            TacoBell tacobell1 = new TacoBell();
+            tacobell1.Name = name ;
+            tacobell1.Location = point1;
+
+
 
 
 
             // Then, return the instance of your TacoBell class
             // Since it conforms to ITrackable
 
-            return tacobell; 
+            return tacobell1; 
 
 
             //_______________________________________________________________
@@ -72,3 +74,5 @@ namespace LoggingKata
         }
     }
 }
+
+//branch coomit
